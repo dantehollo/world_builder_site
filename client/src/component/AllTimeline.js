@@ -14,7 +14,7 @@ export default class AllTimeline extends Component {
     }
 
     refreshTimelines() {
-        axios.get('/api/v1/timeline')
+        axios.get('/api/v1/timeline/')
             .then((res) => {
                 console.log(res.data)
                 const allTimeline = res.data

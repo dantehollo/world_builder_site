@@ -18,6 +18,7 @@ class Event(models.Model):
 
 
 class Note(models.Model):
+    title = models.CharField(max_length=50, default='n/a')
     article = models.TextField(default='n/a')
     event  = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='notes')
     # event = models.ManyToManyField(Event)
