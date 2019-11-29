@@ -13,7 +13,7 @@ export default class SingleTimeline extends Component {
             newEventName: '',
             newEventDescription: '',
             newEventCoordinate: '',
-            timeline_id: null 
+            timeline: null 
         }
     }
 
@@ -64,14 +64,14 @@ export default class SingleTimeline extends Component {
             name: this.state.newEvent.newEventName,
             description: this.state.newEvent.newEventDescription,
             coordinate: this.state.newEvent.newEventCoordinate,
-            timeline_id: timelineId
+            timeline: timelineId
         }
         console.log(newSingleEvent)
 
         axios.post('/api/v1/event/', newSingleEvent)
             .then(() => {
                 console.log("Posting to the backend")
-                this.refreshEvents()
+                this.refreshTimeline()
             })
     }
 

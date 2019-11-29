@@ -57,40 +57,7 @@ export default class AllEvents extends Component {
                         <Link to={`/event/${event.id}`}>
                             <div>{event.name}</div>
                         </Link>)
-                })}
-                <div>
-                    <input
-                        type="string"
-                        name="newEventName"
-                        placeholder="New Event Name"
-                        required="required"
-                        onChange={this.onNewEventChange}
-                        value={this.state.newEvent.newEventName}/>
-                    <input
-                        type="string"
-                        name="newEventDescription"
-                        placeholder="Description"
-                        required="required"
-                        onChange={this.onNewEventChange}
-                        value={this.state.newEvent.newEventDescription}/>
-                    <input
-                        type="number"
-                        name="newEventCoordinate"
-                        placeholder="New Event Coordinate"
-                        required="required"
-                        onChange={this.onNewEventChange}
-                        value={this.state.newEvent.newEventCoordinate}/>
-                    <input
-                        type="number"
-                        name="timeline"
-                        placeholder="Associated Timeline"
-                        required="required"
-                        onChange={this.onNewEventChange}
-                        value={this.state.newEvent.timeline}/>
-                    <button onClick={() => this.createNewEvent()}>
-                        New Event
-                    </button>
-                </div>
+                })}  
             </div>
         )
     }

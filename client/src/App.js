@@ -4,6 +4,7 @@ import './App.css';
 import AllTimeline from './component/AllTimeline'
 import SingleTimeline from './component/SingleTimeline'
 import AllEvents from './component/AllEvents';
+import SingleEvent from './component/SingleEvent';
 
 class App extends React.Component {
   render() {
@@ -22,7 +23,7 @@ class App extends React.Component {
           </Switch>
           <Switch>
             <Route exact path="/" component={AllEvents} />
-            <Route exact path="/event/:eventId" component={SingleTimeline} />
+            <Route exact path="/event/:eventId" component={SingleEvent} />
           </Switch>
         </div>
       </Router>
