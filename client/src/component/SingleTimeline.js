@@ -41,7 +41,7 @@ export default class SingleTimeline extends Component {
         )
     }
 
-    updateTimeline(timelineId) {
+    updateTimeline() {
         axios.put(`/api/v1/timeline/${this.props.match.params.timelineId}/`, {
             name: this.state.timeLine.name
         })
@@ -66,7 +66,7 @@ export default class SingleTimeline extends Component {
             coordinate: this.state.newEvent.newEventCoordinate,
             timeline: timelineId
         }
-        console.log(newSingleEvent)
+        // console.log(newSingleEvent)
 
         axios.post('/api/v1/event/', newSingleEvent)
             .then(() => {

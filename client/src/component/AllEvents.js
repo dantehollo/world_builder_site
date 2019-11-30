@@ -4,13 +4,7 @@ import axios from'axios'
 
 export default class AllEvents extends Component {
     state = {
-        allEvents: [],
-        newEvent: {
-            newEventName: '',
-            newEventDescription: '',
-            newEventCoordinate: '',
-            timeline: ''
-        }
+        allEvents: []
     }
     // load components
     componentDidMount() {
@@ -27,31 +21,10 @@ export default class AllEvents extends Component {
         )  
     }
 
-    // create new event
-    createNewEvent = () => {
-        const newSingleEvent = {
-            name: this.state.newEvent.newEventName,
-            description: this.state.newEvent.newEventDescription,
-            coordinate: this.state.newEvent.newEventCoordinate,
-            timeline: this.state.newEvent.timeline
-        }
-        axios.post('api/v1/event/', newSingleEvent)
-            .then(() => {
-                console.log("Posting to the backend")
-                this.refreshEvents()
-            })
-    }
-
-    onNewEventChange = (event) => {
-        const copyEventState = {...this.state.newEvent}
-        copyEventState[event.target.name] = event.target.value
-        this.setState({newEvent: copyEventState})
-        // console.log("changes made")
-    }
-
     render() {
         return(
             <div>
+                <h2>Events</h2>
                 {this.state.allEvents.map((event) => {
                     return(
                         <Link to={`/event/${event.id}`}>

@@ -1,14 +1,10 @@
 import React, {Component} from 'react'
-import {Link} from 'react'
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 
 export default class AllNotes extends Component {
     state = {
-        allNotes: [],
-        newNote: {
-            title: '',
-            article: ''
-        }
+        allNotes: []
     }
 
     componentDidMount() {
@@ -18,8 +14,10 @@ export default class AllNotes extends Component {
     refreshNotes() {
         axios.get('/api/v1/note/')
             .then((res) => {
-                // const allNotes = res.data
-                this.setState({allNotes: res.data})
+                console.log(this.state.allNotes)
+                console.log(res.data)
+                const allNotes = res.data
+                this.setState({allNotes: allNotes})
             }
         )
     }
@@ -27,10 +25,11 @@ export default class AllNotes extends Component {
     render() {
         return(
             <div>
+                <h2>Notes</h2>
                 {this.state.allNotes.map((note) => {
                     return(
                         <Link to={`/note/${note.id}`}>
-                            <div>{note.name}</div>
+                            <div>{note.title}</div>
                         </Link>)
                 })}
             </div>
