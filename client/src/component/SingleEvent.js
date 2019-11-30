@@ -37,7 +37,7 @@ export default class SingleEvent extends Component {
     }
 
     updateEvent(event) {
-        axios.put(`api/v1/event/${this.props.match.params.eventId}/`, {
+        axios.put(`/api/v1/event/${this.props.match.params.eventId}/`, {
             name: this.state.eventState.name,
             description: this.state.eventState.description,
             coordinate: this.state.eventState.coordinate,
@@ -59,9 +59,9 @@ export default class SingleEvent extends Component {
     render() {
         return(
             <div>
-                <h1>{this.state.eventState.name}</h1>
-                <h2>{this.state.eventState.description}</h2>
-                <p>{this.state.eventState.coordinate}</p>
+                <h1>{this.state.name}</h1>
+                <h2>{this.state.description}</h2>
+                <p>{this.state.coordinate}</p>
                 <button onClick={() => {this.onDeleteEventClick(this.eventId)}}>
                     Delete Event
                 </button>

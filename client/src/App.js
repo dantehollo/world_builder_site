@@ -1,10 +1,12 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom' 
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'; 
 import './App.css';
-import AllTimeline from './component/AllTimeline'
-import SingleTimeline from './component/SingleTimeline'
+import AllTimeline from './component/AllTimeline';
+import SingleTimeline from './component/SingleTimeline';
 import AllEvents from './component/AllEvents';
 import SingleEvent from './component/SingleEvent';
+import AllNotes from './component/AllNotes';
+import SingleNote from './component/SingleNote';
 
 class App extends React.Component {
   render() {
@@ -24,6 +26,10 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={AllEvents} />
             <Route exact path="/event/:eventId" component={SingleEvent} />
+          </Switch>
+          <Switch>
+            <Route exact path="/" component={AllNotes} />
+            <Route exact path="/note/:noteId" component={SingleNote} />
           </Switch>
         </div>
       </Router>

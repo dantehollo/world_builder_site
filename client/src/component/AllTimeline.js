@@ -18,7 +18,7 @@ export default class AllTimeline extends Component {
             .then((res) => {
                 console.log(res.data)
                 const allTimeline = res.data
-                this.setState({ allTimeline: allTimeline})
+                this.setState({allTimeline: allTimeline})
             }
         )
     }
