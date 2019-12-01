@@ -6,7 +6,6 @@ export default class SingleTimeline extends Component {
     state = {
         timeLine: {
             name: '',
-            // newTimelineName: '',
             events: []
         },
         newEvent: {
@@ -29,6 +28,14 @@ export default class SingleTimeline extends Component {
                 this.setState({timeLine: res.data})
             }
         )
+    }
+
+    getEvents() {
+        const timelineId = this.props.match.params.timelineId
+        axios.get(`/api/v1/event/${timelineId}`)
+            .then((res) => {
+                console.log(res.data)
+            })
     }
 
     onDeleteTimelineClick() {
