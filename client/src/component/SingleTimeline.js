@@ -126,56 +126,75 @@ export default class SingleTimeline extends Component {
 
     render() {
         return(
-            <div className='wrapper'>
-                <div className='headline'>
-                    <h1>{this.state.timeLine.name}</h1>
-                    <div className='timeline'>
-                        Timeline goes here
+            <div>
+                <div className='title-block'>
+                    <div className='headline'>
+                        <h1>{this.state.timeLine.name}</h1>
                     </div>
-                    <button onClick={() => {this.onDeleteTimelineClick(this.timelineId)}}>
-                        delete
-                    </button>
-                </div>
-                <div className='event-container'>
-                    <h2>
-                        Events
-                    </h2>
-                    {this.state.timeLine.events.map((event) => {
-                    return(
-                        <Link to={`/event/${event.id}`}>
-                            <div className='Note'>
-                                <h3>{event.name}</h3>
-                                <p>{event.description}</p>
-                            </div>
-                        </Link>)
-                    })}
-                </div>
-                <div className='note-container'>
-                    <h2>
-                        Notes
-                    </h2>
-                    {this.state.timeLine.notes.map((note) => {
-                    return(
-                        <Link to={`/note/${note.id}`}>
-                            <div className='note'>
-                                <h3>{note.title}</h3>
-                                <p>{note.article}</p>
-                            </div>
-                        </Link>)
-                    })}
-                </div>
-                <div className='form'>
-                    <input
-                        type='string'
-                        name='name'
-                        placeholder='Update Name'
-                        // required='required  x'
-                        onChange={this.onTimelineNameChange}
-                        value={this.state.timeLine.name}/>
-                    <button onClick={() => this.updateTimeline()} className='button'>
-                        Update Timeline
-                    </button>
                     <div>
+                        <input
+                            type='string'
+                            name='name'
+                            placeholder='Update Name'
+                            onChange={this.onTimelineNameChange}
+                            value={this.state.timeLine.name}/>
+                        <button onClick={() => this.updateTimeline()}>
+                            Change Name
+                        </button>
+                        <button onClick={() => {this.onDeleteTimelineClick(this.timelineId)}}>
+                            Delete
+                        </button>
+                    </div>
+                </div>
+                <div className='timeline'>
+                    Timeline goes here
+                </div>
+                <div className='info-block'>
+                    <div className='note-container'>
+                        <h2 className='minor-heading'>
+                            Notes
+                        </h2>
+                        {this.state.timeLine.notes.map((note) => {
+                        return(
+                            <Link to={`/note/${note.id}`}>
+                                <div className='note'>
+                                    <h3>{note.title}</h3>
+                                    <p>{note.article}</p>
+                                </div>
+                            </Link>)
+                        })}
+                        <div className='form'>
+                            <input
+                                type='string'
+                                name='newNoteTitle'
+                                placeholder='Note Title'
+                                onChange={this.onNewNoteChange}
+                                value={this.state.newNote.newNoteTitle}/>
+                            <input
+                                type='textfield'
+                                name='newNoteArticle'
+                                placeholder='Text Here'
+                                onChange={this.onNewNoteChange}
+                                value={this.state.newNote.newNoteArticle}/>
+                            <button onClick={() => this.createNewNote()} className='button'>
+                                New Note
+                            </button>
+                        </div>
+                    </div>
+                    <div className='event-container'>
+                        <h2 className='minor-heading'>
+                            Events
+                        </h2>
+                        {this.state.timeLine.events.map((event) => {
+                        return(
+                            <Link to={`/event/${event.id}`}>
+                                <div className='event'>
+                                    <h3>{event.name}</h3>
+                                    <p>{event.description}</p>
+                                </div>
+                            </Link>)
+                        })}
+                        <div>
                         <input
                             type="string"
                             name="newEventName"
@@ -201,23 +220,7 @@ export default class SingleTimeline extends Component {
                             New Event
                         </button>
                     </div>
-                    <div className='form'>
-                        <input
-                            type='string'
-                            name='newNoteTitle'
-                            placeholder='Note Title'
-                            onChange={this.onNewNoteChange}
-                            value={this.state.newNote.newNoteTitle}/>
-                        <input
-                            type='textfield'
-                            name='newNoteArticle'
-                            placeholder='Text Here'
-                            onChange={this.onNewNoteChange}
-                            value={this.state.newNote.newNoteArticle}/>
-                        <button onClick={() => this.createNewNote()} className='button'>
-                            New Note
-                        </button>
-                    </div>
+                </div>
                 </div>
             </div>
         )
