@@ -14,11 +14,10 @@ class App extends React.Component {
     
     return(
       <Router>
-        <div>
+        <div className='reset'>
           <div className="header">
 
           </div>
-
           <Switch>
             <Route exact path="/" component={AllTimeline} />
             <Route exact path="/timeline/:timelineId" component={SingleTimeline} />

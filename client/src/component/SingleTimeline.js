@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import SingleEvent from './SingleEvent'
-import SingleNote from './SingleNote'
-import AllTimeline from './AllTimeline'
+import {Link} from 'react-router-dom'
+// import SingleEvent from './SingleEvent'
+// import SingleNote from './SingleNote'
+// import AllTimeline from './AllTimeline'
 
 export default class SingleTimeline extends Component {
     state = {
@@ -24,6 +25,7 @@ export default class SingleTimeline extends Component {
         }
     }
 
+    // get all information
     componentDidMount() {
         this.refreshTimeline()
     }
@@ -47,6 +49,7 @@ export default class SingleTimeline extends Component {
         )
     }
 
+    // delete the timeline
     onDeleteTimelineClick() {
         const timelineId = this.props.match.params.timelineId
         axios.delete(`/api/v1/timeline/${timelineId}`)
@@ -57,6 +60,7 @@ export default class SingleTimeline extends Component {
         )
     }
 
+    // update the timeline
     updateTimeline() {
         axios.put(`/api/v1/timeline/${this.props.match.params.timelineId}/`, {
             name: this.state.timeLine.name
@@ -83,7 +87,6 @@ export default class SingleTimeline extends Component {
             coordinate: this.state.newEvent.newEventCoordinate,
             timeline: timelineId
         }
-        // console.log(newSingleEvent)
 
         axios.post('/api/v1/event/', newSingleEvent)
             .then(() => {
@@ -97,9 +100,9 @@ export default class SingleTimeline extends Component {
         const copyEventState = {...this.state.newEvent}
         copyEventState[event.target.name] = event.target.value
         this.setState({newEvent: copyEventState})
-        // console.log("changes made")
     }
 
+    // create new note
     createNewNote = () => {
         const timelineId = this.props.match.params.timelineId
         const newSingleNote = {
@@ -123,13 +126,45 @@ export default class SingleTimeline extends Component {
 
     render() {
         return(
-            <div>
-                <div>
+            <div className='wrapper'>
+                <div className='headline'>
                     <h1>{this.state.timeLine.name}</h1>
-                    {/* <p>{events}</p> */}
+                    <div className='timeline'>
+                        Timeline goes here
+                    </div>
                     <button onClick={() => {this.onDeleteTimelineClick(this.timelineId)}}>
                         delete
                     </button>
+                </div>
+                <div className='event-container'>
+                    <h2>
+                        Events
+                    </h2>
+                    {this.state.timeLine.events.map((event) => {
+                    return(
+                        <Link to={`/event/${event.id}`}>
+                            <div className='Note'>
+                                <h3>{event.name}</h3>
+                                <p>{event.description}</p>
+                            </div>
+                        </Link>)
+                    })}
+                </div>
+                <div className='note-container'>
+                    <h2>
+                        Notes
+                    </h2>
+                    {this.state.timeLine.notes.map((note) => {
+                    return(
+                        <Link to={`/note/${note.id}`}>
+                            <div className='note'>
+                                <h3>{note.title}</h3>
+                                <p>{note.article}</p>
+                            </div>
+                        </Link>)
+                    })}
+                </div>
+                <div className='form'>
                     <input
                         type='string'
                         name='name'
@@ -137,7 +172,7 @@ export default class SingleTimeline extends Component {
                         // required='required  x'
                         onChange={this.onTimelineNameChange}
                         value={this.state.timeLine.name}/>
-                    <button onClick={() => this.updateTimeline()}>
+                    <button onClick={() => this.updateTimeline()} className='button'>
                         Update Timeline
                     </button>
                     <div>
@@ -162,11 +197,11 @@ export default class SingleTimeline extends Component {
                             required="required"
                             onChange={this.onNewEventChange}
                             value={this.state.newEvent.newEventCoordinate}/>
-                        <button onClick={() => this.createNewEvent()}>
+                        <button onClick={() => this.createNewEvent()} className='button'>
                             New Event
                         </button>
                     </div>
-                    <div>
+                    <div className='form'>
                         <input
                             type='string'
                             name='newNoteTitle'
@@ -179,10 +214,10 @@ export default class SingleTimeline extends Component {
                             placeholder='Text Here'
                             onChange={this.onNewNoteChange}
                             value={this.state.newNote.newNoteArticle}/>
-                        <button onClick={() => this.createNewNote()}>
+                        <button onClick={() => this.createNewNote()} className='button'>
                             New Note
                         </button>
-                </div>
+                    </div>
                 </div>
             </div>
         )
