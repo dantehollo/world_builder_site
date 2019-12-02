@@ -89,6 +89,7 @@ export default class SingleTimeline extends Component {
         }
 
         const eventDiv = document.createElement("div")
+        eventDiv.className = 'timeline-event'
         const timelineContainer = document.getElementsByClassName('timeline')[0]
         timelineContainer.appendChild(eventDiv)
 
