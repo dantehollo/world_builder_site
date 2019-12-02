@@ -164,14 +164,14 @@ export default class SingleTimeline extends Component {
                             </Link>)
                         })}
                         <div className='note-form'>
-                            <h4>Title</h4>
+                            <h4 className='form-field'>Title</h4>
                             <input
                                 type='string'
                                 name='newNoteTitle'
                                 placeholder='Note Title'
                                 onChange={this.onNewNoteChange}
                                 value={this.state.newNote.newNoteTitle}/>
-                            <h4>Article</h4>
+                            <h4 className='form-field'>Article</h4>
                             <input
                                 className='text-field'
                                 type='string'
@@ -179,9 +179,11 @@ export default class SingleTimeline extends Component {
                                 placeholder='Text Here'
                                 onChange={this.onNewNoteChange}
                                 value={this.state.newNote.newNoteArticle}/>
-                            <button onClick={() => this.createNewNote()} className='button'>
-                                New Note
-                            </button>
+                            <div className='button'>
+                                <button onClick={() => this.createNewNote()}>
+                                    New Note
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div className='event-container'>

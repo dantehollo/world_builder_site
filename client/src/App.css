@@ -111,13 +111,18 @@ a {
   width: 90%;
   height: 150px;
   display: block;
-  /* margin: 15px 0; */
 }
 
 .note-form {
   margin: 15px 0;
 }
 
+.form-field {
+  margin: 15px 0 0 0;
+}
+
 .button {
-  float: left;
+  margin: 15px 0 0 0;
+  display: flex;
+  justify-content: flex-end;
 }
