@@ -14,9 +14,10 @@ class App extends React.Component {
     
     return(
       <Router>
-        <div className='reset'>
+        <div>
           <div className="header">
-
+            <h1>World Builder App</h1>
+            <p>Makie it your own</p>
           </div>
           <Switch>
             <Route exact path="/" component={AllTimeline} />
