@@ -163,15 +163,18 @@ export default class SingleTimeline extends Component {
                                 </div>
                             </Link>)
                         })}
-                        <div className='form'>
+                        <div className='note-form'>
+                            <h4>Title</h4>
                             <input
                                 type='string'
                                 name='newNoteTitle'
                                 placeholder='Note Title'
                                 onChange={this.onNewNoteChange}
                                 value={this.state.newNote.newNoteTitle}/>
+                            <h4>Article</h4>
                             <input
-                                type='textfield'
+                                className='text-field'
+                                type='string'
                                 name='newNoteArticle'
                                 placeholder='Text Here'
                                 onChange={this.onNewNoteChange}
