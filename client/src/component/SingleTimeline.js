@@ -88,6 +88,12 @@ export default class SingleTimeline extends Component {
             timeline: timelineId
         }
 
+        const eventDiv = document.createElement("div")
+        const timelineContainer = document.getElementsByClassName('timeline')[0]
+        timelineContainer.appendChild(eventDiv)
+
+        console.log(timelineContainer)
+
         axios.post('/api/v1/event/', newSingleEvent)
             .then(() => {
                 console.log("Posting to the backend")
@@ -110,7 +116,7 @@ export default class SingleTimeline extends Component {
             article: this.state.newNote.newNoteArticle,
             timeline: timelineId
         }
-
+        
         axios.post('/api/v1/note/', newSingleNote)
             .then(() => {
                 this.refreshTimeline()
@@ -191,11 +197,11 @@ export default class SingleTimeline extends Component {
                             Events
                         </h2>
                         {this.state.timeLine.events.map((event) => {
-                            const eventDiv = document.createElement("div")
-                            const timelineContainer = document.getElementsByClassName('timeline')[0]
-                            timelineContainer.appendChild(eventDiv)
+                            // const eventDiv = document.createElement("div")
+                            // const timelineContainer = document.getElementsByClassName('timeline')[0]
+                            // timelineContainer.appendChild(eventDiv)
 
-                            console.log(timelineContainer)
+                            // console.log(timelineContainer)
                             return(
                                 <Link to={`/event/${event.id}`}>
                                     <div className='note'>
