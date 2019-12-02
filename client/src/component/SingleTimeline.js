@@ -191,41 +191,49 @@ export default class SingleTimeline extends Component {
                             Events
                         </h2>
                         {this.state.timeLine.events.map((event) => {
-                        return(
-                            <Link to={`/event/${event.id}`}>
-                                <div className='event'>
-                                    <h3>{event.name}</h3>
-                                    <p>{event.description}</p>
-                                </div>
-                            </Link>)
+                            const eventDiv = document.createElement("div")
+                            const timelineContainer = document.getElementsByClassName('timeline')[0]
+                            timelineContainer.appendChild(eventDiv)
+
+                            console.log(timelineContainer)
+                            return(
+                                <Link to={`/event/${event.id}`}>
+                                    <div className='note'>
+                                        <h3>{event.name}</h3>
+                                        <p>{event.description}</p>
+                                    </div>
+                                </Link>)
                         })}
                         <div>
-                        <input
-                            type="string"
-                            name="newEventName"
-                            placeholder="New Event Name"
-                            required="required"
-                            onChange={this.onNewEventChange}
-                            value={this.state.newEvent.newEventName}/>
-                        <input
-                            type="string"
-                            name="newEventDescription"
-                            placeholder="Description"
-                            required="required"
-                            onChange={this.onNewEventChange}
-                            value={this.state.newEvent.newEventDescription}/>
-                        <input
-                            type="number"
-                            name="newEventCoordinate"
-                            placeholder="New Event Coordinate"
-                            required="required"
-                            onChange={this.onNewEventChange}
-                            value={this.state.newEvent.newEventCoordinate}/>
-                        <button onClick={() => this.createNewEvent()} className='button'>
-                            New Event
-                        </button>
+                            <h4 className='form-field'>Name</h4>
+                            <input
+                                type="string"
+                                name="newEventName"
+                                placeholder="New Event Name"
+                                required="required"
+                                onChange={this.onNewEventChange}
+                                value={this.state.newEvent.newEventName}/>
+                            <h4 className='form-field'>Description</h4>
+                            <input
+                                type="string"
+                                name="newEventDescription"
+                                placeholder="Description"
+                                required="required"
+                                onChange={this.onNewEventChange}
+                                value={this.state.newEvent.newEventDescription}/>
+                            <h4 className='form-field'>Coordinate</h4>
+                            <input
+                                type="number"
+                                name="newEventCoordinate"
+                                placeholder="New Event Coordinate"
+                                required="required"
+                                onChange={this.onNewEventChange}
+                                value={this.state.newEvent.newEventCoordinate}/>
+                            <button onClick={() => this.createNewEvent()} className='button'>
+                                New Event
+                            </button>
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
         )
