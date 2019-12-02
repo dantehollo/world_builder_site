@@ -1,18 +1,26 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import SingleEvent from './SingleEvent'
+import SingleNote from './SingleNote'
+import AllTimeline from './AllTimeline'
 
 export default class SingleTimeline extends Component {
     state = {
         timeLine: {
             name: '',
-            events: []
+            events: [],
+            notes: []
         },
         newEvent: {
             newEventName: '',
             newEventDescription: '',
             newEventCoordinate: '',
             timeline: null 
+        },
+        newNote: {
+            newNoteTitle: '',
+            newNoteArticle: '',
+            timeline: null
         }
     }
 
@@ -24,7 +32,7 @@ export default class SingleTimeline extends Component {
         const timelineId = this.props.match.params.timelineId
         axios.get(`/api/v1/timeline/${timelineId}`)
             .then((res) => {
-                console.log(res.data)
+                // console.log(res.data)
                 this.setState({timeLine: res.data})
             }
         )
@@ -35,7 +43,8 @@ export default class SingleTimeline extends Component {
         axios.get(`/api/v1/event/${timelineId}`)
             .then((res) => {
                 console.log(res.data)
-            })
+            }
+        )
     }
 
     onDeleteTimelineClick() {
@@ -54,7 +63,8 @@ export default class SingleTimeline extends Component {
         })
             .then(() => {
                 this.refreshTimeline()
-            })
+            }
+        )
     }
 
     onTimelineNameChange = (event) => {
@@ -79,7 +89,8 @@ export default class SingleTimeline extends Component {
             .then(() => {
                 console.log("Posting to the backend")
                 this.refreshTimeline()
-            })
+            }
+        )
     }
 
     onNewEventChange = (event) => {
@@ -89,8 +100,28 @@ export default class SingleTimeline extends Component {
         // console.log("changes made")
     }
 
-    render() {
+    createNewNote = () => {
+        const timelineId = this.props.match.params.timelineId
+        const newSingleNote = {
+            title: this.state.newNote.newNoteTitle,
+            article: this.state.newNote.newNoteArticle,
+            timeline: timelineId
+        }
 
+        axios.post('/api/v1/note/', newSingleNote)
+            .then(() => {
+                this.refreshTimeline()
+            }
+        )
+    }
+
+    onNewNoteChange = (event) => {
+        const copyNoteState = {...this.state.newNote}
+        copyNoteState[event.target.name] = event.target.value
+        this.setState({newNote: copyNoteState})
+    }
+
+    render() {
         return(
             <div>
                 <div>
@@ -131,17 +162,27 @@ export default class SingleTimeline extends Component {
                             required="required"
                             onChange={this.onNewEventChange}
                             value={this.state.newEvent.newEventCoordinate}/>
-                        {/* <input
-                            type="number"
-                            name="timeline"
-                            placeholder="Associated Timeline"
-                            required="required"
-                            onChange={this.onNewEventChange}
-                            value={this.state.newEvent.timeline}/> */}
                         <button onClick={() => this.createNewEvent()}>
                             New Event
                         </button>
                     </div>
+                    <div>
+                        <input
+                            type='string'
+                            name='newNoteTitle'
+                            placeholder='Note Title'
+                            onChange={this.onNewNoteChange}
+                            value={this.state.newNote.newNoteTitle}/>
+                        <input
+                            type='textfield'
+                            name='newNoteArticle'
+                            placeholder='Text Here'
+                            onChange={this.onNewNoteChange}
+                            value={this.state.newNote.newNoteArticle}/>
+                        <button onClick={() => this.createNewNote()}>
+                            New Note
+                        </button>
+                </div>
                 </div>
             </div>
         )

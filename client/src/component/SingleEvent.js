@@ -8,13 +8,7 @@ export default class SingleEvent extends Component {
             description: '',
             coordinate: '',
             // timeline: ''
-        },
-        newNote: {
-            newNoteTitle: '',
-            newNoteArticle: '',
-            event: null
-        },
-        notes: []
+        }
     }
 
     componentDidMount() {
@@ -60,26 +54,6 @@ export default class SingleEvent extends Component {
         this.setState({eventState: copyEventState})
     }
 
-    createNewNote = () => {
-        const eventId = this.props.match.params.eventId
-        const newSingleNote = {
-            title: this.state.newNote.newNoteTitle,
-            article: this.state.newNote.newNoteArticle,
-            event: eventId
-        }
-
-        axios.post('/api/v1/note/', newSingleNote)
-            .then(() => {
-                this.refreshSingleEvent()
-            })
-    }
-
-    onNewNoteChange = (event) => {
-        const copyNoteState = {...this.state.newNote}
-        copyNoteState[event.target.name] = event.target.value
-        this.setState({newNote: copyNoteState})
-    }
-
     render() {
         return(
             <div>
@@ -113,23 +87,6 @@ export default class SingleEvent extends Component {
                         value={this.state.eventState.coordinate}/>
                     <button onClick={() => this.updateEvent()}>
                         Update Event
-                    </button>
-                </div>
-                <div>
-                    <input
-                        type='string'
-                        name='newNoteTitle'
-                        placeholder='Note Title'
-                        onChange={this.onNewNoteChange}
-                        value={this.state.newNote.newNoteTitle}/>
-                    <input
-                        type='textfield'
-                        name='newNoteArticle'
-                        placeholder='Text Here'
-                        onChange={this.onNewNoteChange}
-                        value={this.state.newNote.newNoteArticle}/>
-                    <button onClick={() => this.createNewNote()}>
-                        New Note
                     </button>
                 </div>
             </div>
