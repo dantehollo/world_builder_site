@@ -3,4 +3,6 @@ The world builder app is a lightweight application meant for writers who want to
 [Trello Board](https://trello.com/b/E2pgTVoE/world-builder-app)
 
 Wireframe and ERD:
-![alt text]()
+![alt text](https://git.generalassemb.ly/mcsei24/world-builder-app/blob/master/wireframes_erds/IMG_20191203_081026310.jpg)
+
+![alt text](https://git.generalassemb.ly/mcsei24/world-builder-app/blob/master/wireframes_erds/IMG_20191203_081040722.jpg)
