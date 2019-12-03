@@ -51,7 +51,7 @@ a {
 }
 
 .header p {
-  margin-left: 50px;
+  margin-left: 28px;
   font-style: italic;
 }
 
@@ -75,17 +75,22 @@ a {
 
 .note-container {
   width: 70%;
+  height: 500px;
+  overflow: auto;
   margin: 10px, 5px;
 }
 
 .event-container {
   width: 25%;
+  height: 500px;
+  overflow: auto;
   margin: 10px, 5px;
 }
 
 .minor-heading {
   font-size: 20px;
   margin-bottom: 10px;
+  text-decoration: underline;
 }
 
 .note {
@@ -151,4 +156,22 @@ a {
   border-top: black 2px solid;
   margin: 0 auto;
   /* height: 50px; */
+}
+
+.welcome {
+  font-size: 75px;
+  text-align: center;
+  margin: 200px 0 50px 0;
+  /* font-style: italic; */
+}
+
+.three-column {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.column {
+  width: 33%;
+  border: black 1px solid;
 }

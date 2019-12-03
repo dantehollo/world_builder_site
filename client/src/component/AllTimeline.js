@@ -43,6 +43,11 @@ export default class AllTimeline extends Component {
     render() {
         return(
             <div>
+                <div className='major-header'>
+                    <h3>
+                        Timelines
+                    </h3>
+                </div>
                 {this.state.allTimeline.map((timeline) => {
                     return(
                         <Link to={`/timeline/${timeline.id}`}>

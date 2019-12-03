@@ -179,9 +179,8 @@ export default class SingleTimeline extends Component {
                                 onChange={this.onNewNoteChange}
                                 value={this.state.newNote.newNoteTitle}/>
                             <h4 className='form-field'>Article</h4>
-                            <input
+                            <textarea
                                 className='text-field'
-                                type='string'
                                 name='newNoteArticle'
                                 placeholder='Text Here'
                                 onChange={this.onNewNoteChange}
