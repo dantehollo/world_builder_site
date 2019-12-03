@@ -44,10 +44,11 @@ export default class AllTimeline extends Component {
         return(
             <div>
                 <div className='major-header'>
-                    <h3>
+                    <h3 className='minor-heading'>
                         Timelines
                     </h3>
                 </div>
+                <div className='bottom-space'>
                 {this.state.allTimeline.map((timeline) => {
                     return(
                         <Link to={`/timeline/${timeline.id}`}>
@@ -56,6 +57,7 @@ export default class AllTimeline extends Component {
                         }
                     )
                 }
+                </div>
                 <div>
                     <input
                         type='string'

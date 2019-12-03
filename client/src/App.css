@@ -166,12 +166,19 @@ a {
 }
 
 .three-column {
-  width: 95%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
+  margin: 0 auto;
 }
 
 .column {
   width: 33%;
-  border: black 1px solid;
+  border: rgba(0, 0, 0, 0.15) 1px solid;
+  margin: 0 5px;
+  padding: 5px 10px;
+}
+
+.bottom-space {
+  margin-bottom: 15px;
 }
