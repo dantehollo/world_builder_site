@@ -25,7 +25,9 @@ export default class AllNotes extends Component {
     render() {
         return(
             <div>
-                <h2>Notes</h2>
+                <h2 className='minor-heading'>
+                    Notes
+                </h2>
                 {this.state.allNotes.map((note) => {
                     return(
                         <Link to={`/note/${note.id}`}>

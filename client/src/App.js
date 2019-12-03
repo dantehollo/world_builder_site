@@ -19,30 +19,19 @@ class App extends React.Component {
             <h1>World Builder</h1>
             <p>Make it your own</p>
           </div>
-          <div>
-            <h1 className='welcome'>
-              Welcome
-            </h1>
-          </div>
-          <div className='three-column'>
-            <div className='column'>
-              <Switch>
-                <Route exact path="/" component={AllTimeline} />
-                <Route exact path="/timeline/:timelineId" component={SingleTimeline} />
-              </Switch>
-            </div>
-            <div className='column'>
-              <Switch>
-                <Route exact path="/" component={AllEvents} />
-                <Route exact path="/event/:eventId" component={SingleEvent} />
-              </Switch>
-            </div>
-            <div className='column'>
-              <Switch>
-                <Route exact path="/" component={AllNotes} />
-                <Route exact path="/note/:noteId" component={SingleNote} />
-              </Switch>
-            </div>
+          <Switch>
+            <Route exact path="/" component={AllTimeline} />
+            <Route exact path="/timeline/:timelineId" component={SingleTimeline} />
+          </Switch>
+          <div className='hidden'>
+            <Switch>
+              <Route exact path="/" component={AllEvents} />
+              <Route exact path="/event/:eventId" component={SingleEvent} />
+            </Switch>
+            <Switch>
+              <Route exact path="/" component={AllNotes} />
+              <Route exact path="/note/:noteId" component={SingleNote} />
+            </Switch>
           </div>
         </div>
       </Router>

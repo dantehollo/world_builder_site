@@ -24,7 +24,9 @@ export default class AllEvents extends Component {
     render() {
         return(
             <div>
-                <h2>Events</h2>
+                <h2 className='minor-heading'>
+                    Events
+                </h2>
                 {this.state.allEvents.map((event) => {
                     return(
                         <Link to={`/event/${event.id}`}>
