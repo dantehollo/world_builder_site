@@ -35,6 +35,11 @@ a {
   color: black;
 }
 
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.15em;
+}
+
 .wrapper {
   width: 1000px;
   margin: auto;
@@ -85,6 +90,12 @@ a {
   height: 500px;
   overflow: auto;
   margin: 10px, 5px;
+}
+
+.major-heading {
+  text-align: center;
+  font-size: 50px;
+  margin: 200px 0 50px 0;
 }
 
 .minor-heading {
@@ -161,7 +172,7 @@ a {
 .welcome {
   font-size: 75px;
   text-align: center;
-  margin: 200px 0 50px 0;
+  margin: 200px 0 25px 0;
   /* font-style: italic; */
 }
 
@@ -185,4 +196,14 @@ a {
 
 .hidden {
   visibility: hidden;
+}
+
+.not-hidden {
+  visibility: visible;
+}
+
+.center-field {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
 }

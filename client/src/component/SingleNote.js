@@ -52,30 +52,30 @@ export default class SingleNote extends Component {
 
     render() {
         return(
-            <div>
+            <div className='not-hidden'>
                 <div>
-                    <h1>{this.state.title}</h1>
-                    <p>{this.state.article}</p>
+                    <h1 className='major-heading'>{this.state.title}</h1>
+                    <p className='bottom-space'>{this.state.article}</p>
                 </div>
-                <div>
+                <div className='center-field'>
                     <input
                         type='string'
                         name='title'
                         placeholde='Note Title'
                         onChange={this.onNoteChange}
                         value={this.state.noteState.title}/>
-                        <input
+                    <input
                         type='string'
                         name='article'
                         placeholde='Note Article'
                         onChange={this.onNoteChange}
                         value={this.state.noteState.article}/>
-                        <button onClick={() => this.updateNote()}>
+                    <button onClick={() => this.updateNote()}>
                             Update Note
-                        </button>
-                        <button onClick={() => this.onDeleteNoteClick()}>
+                    </button>
+                    <button onClick={() => this.onDeleteNoteClick()}>
                             Delete Note
-                        </button>
+                    </button>
                 </div>
             </div>
         )

@@ -47,6 +47,11 @@ export default class AllTimeline extends Component {
         return(
             <div>
                 <div>
+                    <h1 className='welcome'>
+                        Welcome
+                    </h1>
+                </div>
+                <div className='center-field'>
                     <div>
                         <input
                             type='string'
@@ -60,23 +65,23 @@ export default class AllTimeline extends Component {
                         New Timeline
                     </button>
                 </div>
-                <div>
-                    <h3 className='minor-heading'>
-                        Timelines
-                    </h3>
-                </div>
-                <div className='bottom-space'>
-                {this.state.allTimeline.map((timeline) => {
-                    return(
-                        <Link to={`/timeline/${timeline.id}`}>
-                            <div>{timeline.name}</div>
-                        </Link>)
+                <div className='three-column'>
+                    <div>
+                        <h3 className='minor-heading'>
+                            Timelines
+                        </h3>
+                        {this.state.allTimeline.map((timeline) => {
+                            return(
+                                <Link to={`/timeline/${timeline.id}`}>
+                                    <div>{timeline.name}</div>
+                                </Link>)
+                                }
+                            )
                         }
-                    )
-                }
+                    </div>
+                    <AllEvents />
+                    <AllNotes />
                 </div>
-                <AllEvents />
-                <AllNotes />
             </div>
         )
     }

@@ -56,13 +56,10 @@ export default class SingleEvent extends Component {
 
     render() {
         return(
-            <div>
-                <h1>{this.state.name}</h1>
-                <h2>{this.state.description}</h2>
-                <p>{this.state.coordinate}</p>
-                <button onClick={() => {this.onDeleteEventClick(this.eventId)}}>
-                    Delete Event
-                </button>
+            <div className='not-hidden'>
+                <h1 className='major-heading'>{this.state.name}</h1>
+                <h2 className='center-field'>{this.state.description}</h2>
+                {/* <p>{this.state.coordinate}</p> */}
                 <div>
                     <input
                         type='string'
@@ -87,6 +84,9 @@ export default class SingleEvent extends Component {
                         value={this.state.eventState.coordinate}/>
                     <button onClick={() => this.updateEvent()}>
                         Update Event
+                    </button>
+                    <button onClick={() => {this.onDeleteEventClick(this.eventId)}}>
+                        Delete Event
                     </button>
                 </div>
             </div>
