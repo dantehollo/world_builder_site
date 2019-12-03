@@ -155,6 +155,7 @@ export default class SingleTimeline extends Component {
                         )
                     })}
                 </div>
+                <hr className='hr' />
                 <div className='info-block'>
                     <div className='note-container'>
                         <h2 className='minor-heading'>

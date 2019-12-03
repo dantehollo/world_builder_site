@@ -59,16 +59,10 @@ a {
   font-size: 25px;
 }
 
-.timeline {
-  height: 250px;
-  width: 100%;
-  border: black .5px solid;
-}
-
 .title-block{
   display: flex;
   justify-content: space-between;
-  vertical-align: bottom;
+  align-items: center;
   margin: 10px 0px;
 }
 
@@ -127,8 +121,34 @@ a {
   justify-content: flex-end;
 }
 
+.timeline {
+  height: 250px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .timeline-event {
   width: 100px;
   height: 50px;
   border: black solid 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  text-align: center;
+
+}
+
+.timeline-container {
+  border: black .5px solid;
+  /* padding-bottom: 50px; */
+}
+
+.hr {
+  width: 100%;
+  border-top: black 2px solid;
+  margin: 0 auto;
+  /* height: 50px; */
 }
