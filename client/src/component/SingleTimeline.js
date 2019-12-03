@@ -87,14 +87,7 @@ export default class SingleTimeline extends Component {
             coordinate: this.state.newEvent.newEventCoordinate,
             timeline: timelineId
         }
-
-        const eventDiv = document.createElement("div")
-        eventDiv.className = 'timeline-event'
-        const timelineContainer = document.getElementsByClassName('timeline')[0]
-        timelineContainer.appendChild(eventDiv)
-
-        console.log(timelineContainer)
-
+        
         axios.post('/api/v1/event/', newSingleEvent)
             .then(() => {
                 console.log("Posting to the backend")
@@ -154,7 +147,13 @@ export default class SingleTimeline extends Component {
                     </div>
                 </div>
                 <div className='timeline'>
-                    Timeline goes here
+                    {this.state.timeLine.events.map((event) => {
+                         return (
+                            <div className='timeline-event'>
+                                <h3>{event.name}</h3>
+                            </div>
+                        )
+                    })}
                 </div>
                 <div className='info-block'>
                     <div className='note-container'>
@@ -198,11 +197,6 @@ export default class SingleTimeline extends Component {
                             Events
                         </h2>
                         {this.state.timeLine.events.map((event) => {
-                            // const eventDiv = document.createElement("div")
-                            // const timelineContainer = document.getElementsByClassName('timeline')[0]
-                            // timelineContainer.appendChild(eventDiv)
-
-                            // console.log(timelineContainer)
                             return(
                                 <Link to={`/event/${event.id}`}>
                                     <div className='note'>

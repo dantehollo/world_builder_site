@@ -126,3 +126,9 @@ a {
   display: flex;
   justify-content: flex-end;
 }
+
+.timeline-event {
+  width: 100px;
+  height: 50px;
+  border: black solid 1px;
+}
