@@ -16,8 +16,10 @@ class App extends React.Component {
       <Router>
         <div className='wrapper'>
           <div className="header">
+            <a href='/'>
             <h1>World Builder</h1>
             <p>Make it your own</p>
+            </a>
           </div>
           <Switch>
             <Route exact path="/" component={AllTimeline} />

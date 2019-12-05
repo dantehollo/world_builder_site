@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 // import SingleEvent from './SingleEvent'
 // import SingleNote from './SingleNote'
 // import AllTimeline from './AllTimeline'
@@ -22,7 +23,8 @@ export default class SingleTimeline extends Component {
             newNoteTitle: '',
             newNoteArticle: '',
             timeline: null
-        }
+        },
+        reDirHome: false
     }
 
     // get all information
@@ -54,8 +56,7 @@ export default class SingleTimeline extends Component {
         const timelineId = this.props.match.params.timelineId
         axios.delete(`/api/v1/timeline/${timelineId}`)
             .then((res) => {
-                // res.redirect('/')
-                console.log(res.data)
+                this.setState({reDirHome: true})
             }
         )
     }
@@ -125,6 +126,9 @@ export default class SingleTimeline extends Component {
     }
 
     render() {
+        if(this.state.reDirHome === true){
+            return <Redirect to={'/'} />
+        }
         return(
             <div>
                 <div className='title-block'>

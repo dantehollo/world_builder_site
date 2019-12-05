@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+import {Redirect} from 'react-router-dom'
 
 export default class SingleEvent extends Component {
     state = {
@@ -7,8 +8,8 @@ export default class SingleEvent extends Component {
             name: '',
             description: '',
             coordinate: '',
-            // timeline: ''
-        }
+        },
+        reDirHome: false
     }
 
     componentDidMount() {
@@ -30,7 +31,7 @@ export default class SingleEvent extends Component {
         const eventId = this.props.match.params.eventId
         axios.delete(`/api/v1/event/${eventId}/`)
             .then((res) => {
-                console.log(res.data)
+                this.setState({reDirHome: true})
             }
         )
     }
@@ -55,6 +56,9 @@ export default class SingleEvent extends Component {
     }
 
     render() {
+        if (this.state.reDirHome == true) {
+            return (<Redirect to={'/'}/>)
+        }
         return(
             <div className='not-hidden'>
                 <h1 className='major-heading'>{this.state.name}</h1>

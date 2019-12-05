@@ -1,12 +1,14 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+import {Redirect} from 'react-router-dom'
 
 export default class SingleNote extends Component {
     state = {
         noteState: {
             title: '',
             article: ''
-        }
+        },
+        reDirHome: false
     }
 
     componentDidMount() {
@@ -25,8 +27,8 @@ export default class SingleNote extends Component {
     onDeleteNoteClick() {
         const noteId = this.props.match.params.noteId
         axios.delete(`/api/v1/note/${noteId}`)
-            .then((res) => {
-                console.log(res.data)
+            .then(() => {
+                this.setState({reDirHome: true})
             }
         )
     }
@@ -51,6 +53,9 @@ export default class SingleNote extends Component {
     }
 
     render() {
+        if(this.state.reDirHome === true){
+            return <Redirect to={'/'} />
+        }
         return(
             <div className='not-hidden'>
                 <div>
