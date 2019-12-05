@@ -14,7 +14,6 @@ export default class AllEvents extends Component {
     refreshEvents() {
         axios.get('/api/v1/event')
         .then((res) => {
-            console.log(res.data)
             const allEvents = res.data
             this.setState({allEvents: allEvents})
             }
@@ -29,8 +28,10 @@ export default class AllEvents extends Component {
                 </h2>
                 {this.state.allEvents.map((event) => {
                     return(
-                        <Link to={`/event/${event.id}`}>
-                            <div>{event.name}</div>
+                        <Link to={`/event/${event.id}`} key={event.id}>
+                            <div>
+                                {event.name}
+                            </div>
                         </Link>)
                 })}  
             </div>

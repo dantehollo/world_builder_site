@@ -19,7 +19,6 @@ export default class AllTimeline extends Component {
     refreshTimelines() {
         axios.get('/api/v1/timeline/')
             .then((res) => {
-                console.log(res.data)
                 const allTimeline = res.data
                 this.setState({allTimeline: allTimeline})
             }
@@ -44,8 +43,8 @@ export default class AllTimeline extends Component {
     }
 
     clearForm() {
-        const clearField = document.getElementsByClassName('clear-form')[0]
-        clearField.reset()
+       {/* const clearField =*/} document.getElementsByClassName('clear-form')[0].reset()
+        // clearField.reset()
     }
 
     render() {
@@ -79,8 +78,10 @@ export default class AllTimeline extends Component {
                         </h3>
                         {this.state.allTimeline.map((timeline) => {
                             return(
-                                <Link to={`/timeline/${timeline.id}`}>
-                                    <div>{timeline.name}</div>
+                                <Link to={`/timeline/${timeline.id}`} key={timeline.id}>
+                                    <div>
+                                        {timeline.name}
+                                    </div>
                                 </Link>)
                                 }
                             )

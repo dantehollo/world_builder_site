@@ -14,8 +14,6 @@ export default class AllNotes extends Component {
     refreshNotes() {
         axios.get('/api/v1/note/')
             .then((res) => {
-                console.log(this.state.allNotes)
-                console.log(res.data)
                 const allNotes = res.data
                 this.setState({allNotes: allNotes})
             }
@@ -30,8 +28,10 @@ export default class AllNotes extends Component {
                 </h2>
                 {this.state.allNotes.map((note) => {
                     return(
-                        <Link to={`/note/${note.id}`}>
-                            <div>{note.title}</div>
+                        <Link to={`/note/${note.id}`} key={note.id}>
+                            <div>
+                                {note.title}
+                            </div>
                         </Link>)
                 })}
             </div>

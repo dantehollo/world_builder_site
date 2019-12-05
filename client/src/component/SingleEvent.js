@@ -20,8 +20,6 @@ export default class SingleEvent extends Component {
         const eventId = this.props.match.params.eventId
         axios.get(`/api/v1/event/${eventId}/`)
             .then((res) => {
-                console.log(res.data)
-                console.log(this.state.events)
                 this.setState(res.data)
             }
         )

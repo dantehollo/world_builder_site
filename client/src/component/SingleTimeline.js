@@ -36,7 +36,6 @@ export default class SingleTimeline extends Component {
         const timelineId = this.props.match.params.timelineId
         axios.get(`/api/v1/timeline/${timelineId}`)
             .then((res) => {
-                // console.log(res.data)
                 this.setState({timeLine: res.data})
             }
         )
@@ -46,7 +45,6 @@ export default class SingleTimeline extends Component {
         const timelineId = this.props.match.params.timelineId
         axios.get(`/api/v1/event/${timelineId}`)
             .then((res) => {
-                console.log(res.data)
             }
         )
     }
@@ -81,7 +79,6 @@ export default class SingleTimeline extends Component {
      // create new event
      createNewEvent = () => {
         const timelineId = this.props.match.params.timelineId
-        console.log(timelineId)
         const newSingleEvent = {
             name: this.state.newEvent.newEventName,
             description: this.state.newEvent.newEventDescription,
@@ -91,7 +88,6 @@ export default class SingleTimeline extends Component {
         
         axios.post('/api/v1/event/', newSingleEvent)
             .then(() => {
-                console.log("Posting to the backend")
                 this.refreshTimeline()
             }
         )
