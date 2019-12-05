@@ -43,6 +43,11 @@ export default class AllTimeline extends Component {
         this.setState({newTimelineName: newTimelineName})
     }
 
+    clearForm() {
+        const clearField = document.getElementsByClassName('clear-form')[0]
+        clearField.reset()
+    }
+
     render() {
         return(
             <div>
@@ -52,6 +57,7 @@ export default class AllTimeline extends Component {
                     </h1>
                 </div>
                 <div className='center-field'>
+                <form className='clear-form'>
                     <div>
                         <input
                             type='string'
@@ -60,10 +66,11 @@ export default class AllTimeline extends Component {
                             required='required'
                             onChange={this.onNewTimelineNameChange}
                             value={this.state.newTimelineName} />
+                        <button onClick={() => this.createNewTimeline()}>
+                            New Timeline
+                        </button>
                     </div>
-                    <button onClick={() => this.createNewTimeline()}>
-                        New Timeline
-                    </button>
+                </form>
                 </div>
                 <div className='three-column'>
                     <div>
