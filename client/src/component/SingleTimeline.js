@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import {Redirect} from 'react-router-dom'
+// import Drop from './Drop'
+// import Drag from './Drag'
 // import SingleEvent from './SingleEvent'
 // import SingleNote from './SingleNote'
 // import AllTimeline from './AllTimeline'
@@ -17,6 +19,8 @@ export default class SingleTimeline extends Component {
             newEventName: '',
             newEventDescription: '',
             newEventCoordinate: '',
+            xCoordinate: '',
+            yCoordinate: '',
             timeline: null 
         },
         newNote: {
@@ -121,6 +125,13 @@ export default class SingleTimeline extends Component {
         this.setState({newNote: copyNoteState})
     }
 
+    // onDrag = (event, key) => {
+    //     event.preventDefault()
+    //     key = event.id
+    //     console.log(key.getX())
+    //     console.log(key.getY())
+    // }
+
     render() {
         if(this.state.reDirHome === true){
             return <Redirect to={'/'} />
@@ -146,19 +157,24 @@ export default class SingleTimeline extends Component {
                         </button>
                     </div>
                 </div>
-                <div className='timeline'>
+                {/* <Drop> */}
+                <div className='timeline' id='timelineView'>
                     {this.state.timeLine.events.map((event) => {
                          return (
+                            // <Drag> 
                             <div 
                             className='timeline-event'
                             key={event.id}
-                            draggable
-                            onDrag={(event) => this.onDrag(event, this.timeline)} >
+                            // draggable
+                            // onDrag={(event) => this.onDrag(event, key)} 
+                            >
                                 <h3>{event.name}</h3>
                             </div>
+                            // </Drag>
                         )
                     })}
                 </div>
+                {/* </Drop> */}
                 <hr className='hr' />
                 <div className='info-block'>
                     <div className='note-container'>
