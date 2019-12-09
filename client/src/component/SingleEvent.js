@@ -54,7 +54,7 @@ export default class SingleEvent extends Component {
     }
 
     render() {
-        if (this.state.reDirHome == true) {
+        if (this.state.reDirHome === true) {
             return (<Redirect to={'/'}/>)
         }
         return(

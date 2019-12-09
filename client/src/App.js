@@ -7,6 +7,7 @@ import AllEvents from './component/AllEvents';
 import SingleEvent from './component/SingleEvent';
 import AllNotes from './component/AllNotes';
 import SingleNote from './component/SingleNote';
+import HomePage from './component/HomePage'
 
 class App extends React.Component {
   render() {
@@ -16,25 +17,26 @@ class App extends React.Component {
       <Router>
         <div className='wrapper'>
           <div className="header">
-            <a href='/'>
-            <h1>World Builder</h1>
-            <p>Make it your own</p>
+              <a href='/'>
+              <h1>World Builder</h1>
+              <p>Make it your own</p>
             </a>
           </div>
+         <Switch>
+           <Route exact path="/" component={HomePage} />
+         </Switch>
           <Switch>
-            <Route exact path="/" component={AllTimeline} />
+            <Route exact path="/timeline" component={AllTimeline} />
             <Route exact path="/timeline/:timelineId" component={SingleTimeline} />
           </Switch>
-          <div className='hidden'>
-            <Switch>
-              <Route exact path="/" component={AllEvents} />
-              <Route exact path="/event/:eventId" component={SingleEvent} />
-            </Switch>
-            <Switch>
-              <Route exact path="/" component={AllNotes} />
-              <Route exact path="/note/:noteId" component={SingleNote} />
-            </Switch>
-          </div>
+          <Switch>
+            <Route exact path="/event" component={AllEvents} />
+            <Route exact path="/event/:eventId" component={SingleEvent} />
+          </Switch>
+          <Switch>
+            <Route exact path="/note" component={AllNotes} />
+            <Route exact path="/note/:noteId" component={SingleNote} />
+          </Switch>
         </div>
       </Router>
     )

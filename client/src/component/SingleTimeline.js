@@ -149,7 +149,11 @@ export default class SingleTimeline extends Component {
                 <div className='timeline'>
                     {this.state.timeLine.events.map((event) => {
                          return (
-                            <div className='timeline-event'>
+                            <div 
+                            className='timeline-event'
+                            key={event.id}
+                            draggable
+                            onDrag={(event) => this.onDrag(event, this.timeline)} >
                                 <h3>{event.name}</h3>
                             </div>
                         )
@@ -163,7 +167,7 @@ export default class SingleTimeline extends Component {
                         </h2>
                         {this.state.timeLine.notes.map((note) => {
                         return(
-                            <Link to={`/note/${note.id}`}>
+                            <Link to={`/note/${note.id}`} key={note.id}>
                                 <div className='note'>
                                     <h3>{note.title}</h3>
                                     <p>{note.article}</p>
@@ -198,7 +202,7 @@ export default class SingleTimeline extends Component {
                         </h2>
                         {this.state.timeLine.events.map((event) => {
                             return(
-                                <Link to={`/event/${event.id}`}>
+                                <Link to={`/event/${event.id}`} key={event.id}>
                                     <div className='note'>
                                         <h3>{event.name}</h3>
                                         <p>{event.description}</p>
