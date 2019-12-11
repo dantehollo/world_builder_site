@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
 
-export default class Drag extends Component ({
+export default class Drag extends Component {
+    
     getDefaultProps = () => {
         return {
             initialPos: {x: 0, y: 0}
         }
-    },
+    }
     
     
     getInitalState = () => {
@@ -14,7 +15,7 @@ export default class Drag extends Component ({
             dragging: false,
             rel: null
         }
-    },
+    }
     
     
     componentDidUpdate = (props, state) => {
@@ -25,12 +26,12 @@ export default class Drag extends Component ({
             document.removeEventListener('mousemove', this.onMouseMove)
             document.removeEventListener('mouseup', this.onMouseUp)
         }
-    },
+    }
     
     
     onMouseDown = (e) => {
         if(e.button !== 0) return
-        let pos = $(this.getDonNode()).offset()
+        let pos = this.getDOMNode().offset()
         this.setState({
             dragging: true,
             rel: {
@@ -40,14 +41,14 @@ export default class Drag extends Component ({
         })
         e.stopPropagation()
         e.preventDefault()
-    },
+    }
     
     
     onMouseUp = (e) => {
         this.setState({dragging: false})
         e.stopPropagation()
         e.preventDefault()
-    },
+    }
     
     
     onMouseMove = (e) => {
@@ -55,12 +56,12 @@ export default class Drag extends Component ({
         this.setState({
             pos: {
                 x: e.pageX - this.state.rel.x,
-                y: e.pageY - thisstate.rel.y
+                y: e.pageY - this.state.rel.y
             }
         })
         e.stopPropagation()
         e.preventDefault()
-    },
+    }
     
     
     render = () => {
@@ -70,6 +71,6 @@ export default class Drag extends Component ({
                 left: this.state.x + 'px',
                 top: this.state.y + 'px'
             }
-        }, this,props.children))
+        }, this.props.children))
     }
-})
+}
