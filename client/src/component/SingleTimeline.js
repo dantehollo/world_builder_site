@@ -2,11 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import {Redirect} from 'react-router-dom'
-// import Drop from './Drop'
-import Drag from './Drag'
-// import SingleEvent from './SingleEvent'
-// import SingleNote from './SingleNote'
-// import AllTimeline from './AllTimeline'
+import Draggable from 'react-draggable'
 
 export default class SingleTimeline extends Component {
     state = {
@@ -158,21 +154,21 @@ export default class SingleTimeline extends Component {
                     </div>
                 </div>
                 {/* <Drop> */}
-                <div className='timeline' id='timelineView'>
-                    {this.state.timeLine.events.map((event) => {
-                         return (
-                            // <Drag> 
-                            <Drag
-                            className='timeline-event'
-                            key={event.id}
-                            // draggable
-                            // onDrag={(event) => this.onDrag(event, key)} 
-                            >
-                                <h3>{event.name}</h3>
-                            </Drag>
-                            // </Drag>
-                        )
-                    })}
+                <div className='timeline-viewer'>
+                    <div className='timeline' id='timelineView'>
+                        {this.state.timeLine.events.map((event) => {
+                            return (
+                                <Draggable>
+                                    <div 
+                                    className='timeline-event'
+                                    key={event.id}
+                                    >
+                                        <h3>{event.name}</h3>
+                                    </div>
+                                </Draggable>
+                            )
+                        })}
+                    </div>
                 </div>
                 {/* </Drop> */}
                 <hr className='hr' />
