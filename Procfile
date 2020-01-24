@@ -1,1 +1,1 @@
-web: gunicorn wb_db.wsgi --log-file -
+web: gunicorn wb_db.wsgi --preload --log-file -
